@@ -1,0 +1,43 @@
+<button (click)="loadcourses()" >Load</button>
+ <button (click)="AddCourse()" >Add</button>
+<div *ngIf="courses.length > 0; else noCourses"></div>
+
+<ul>
+  <li *ngFor="let course of this.courses ;trackBy:trackCourse">
+    - {{ course.title | summary }}| {{ course.students | number }} |
+    {{ course.price | currency : "EUR"  }} | Rating:
+    {{ course.rating | number : "2.1-1" }} |
+    {{ course.releaseDate | date : "medium" }}
+
+<button (click)="remove(course)">Remove</button>
+  </li>
+</ul>
+<ng-template #noCourses>
+  <div class="alert alert-danger" role="alert">No Courses Yet</div>
+</ng-template>
+
+
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      [class.active]="this.test_value == 'map'"
+      (click)="this.test_value = 'map'"
+      >Map View</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      (click)="this.test_value = 'list'"
+      class="nav-link"
+      [class.active]="this.test_value == 'list'"
+    >
+      List View</a
+    >
+  </li>
+</ul>
+<div [ngSwitch]="this.test_value">
+  <div *ngSwitchCase="'map'">Map view content</div>
+  <div *ngSwitchCase="'list'">List view content</div>
+  <div *ngSwitchDefault>Somthingelse</div>
+</div>
