@@ -3,6 +3,7 @@ import { FollwersService } from '../services/follwers.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map, switchMap } from 'rxjs';
 import { combineLatest } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-followers',
   templateUrl: './followers.component.html',
@@ -13,7 +14,8 @@ export class FollowersComponent implements OnInit {
   actualpage;
   constructor(
     private route: ActivatedRoute,
-    private service: FollwersService
+    private service: FollwersService,
+    public authService: AuthService
   ) {}
   ngOnInit() {
     combineLatest([this.route.paramMap, this.route.queryParamMap])

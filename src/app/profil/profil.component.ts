@@ -17,7 +17,7 @@ export class ProfilComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       let id = +params.get('id');
       let user = params.get('username');
-      console.log(id + user);
+      console.log(id);
     });
   }
 }

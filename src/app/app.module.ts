@@ -16,13 +16,18 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { PostsComponent } from './posts/posts.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PostService } from './services/post.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FollowersComponent } from './followers/followers.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfilComponent } from './profil/profil.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+
+import { AuthService } from './services/auth.service';
+
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -42,6 +47,7 @@ import { HomeComponent } from './home/home.component';
     NotFoundComponent,
     ProfilComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,11 +55,19 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+      },
+    }),
   ],
   providers: [
     CourseService,
     PostService,
     { provide: ErrorHandler, useClass: AppErrorHandler },
+    AuthService,
   ],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,10 @@
+<!-- login.component.html -->
+<form (submit)="login()">
+  <label for="username" >Username</label>
+  <input type="text" id="username" name="username" [(ngModel)]="credentials.username" class="form-control">
+
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" [(ngModel)]="credentials.password"class="form-control">
+
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
