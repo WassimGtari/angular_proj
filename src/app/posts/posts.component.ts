@@ -1,14 +1,9 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
-import { catchError, retry } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+
 import { AppError } from '../common/AppError';
-import { NotFoundError } from '../common/not-found-error';
+
 import { BadRequestError } from '../common/badrequiest-error';
 
 @Component({
@@ -17,7 +12,7 @@ import { BadRequestError } from '../common/badrequiest-error';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
-  posts: any[];
+  posts = [];
 
   constructor(private http: HttpClient, private service: PostService) {}
   ngOnInit(): void {
@@ -27,7 +22,7 @@ export class PostsComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.posts = response;
-          console.log(response);
+          //console.log(response);
         },
         error: (error: AppError) => {
           throw error;
@@ -36,13 +31,13 @@ export class PostsComponent implements OnInit {
   }
 
   addpost(input: HTMLInputElement) {
-    let post = { title: input.value };
+    const post = { title: input.value };
     this.posts.splice(0, 0, post);
     input.value = '';
     this.service.create(post).subscribe({
       next: (newpost) => {
         post['id'] = newpost.id;
-        console.log(newpost);
+        // console.log(newpost);
       },
       error: (error: AppError) => {
         this.posts.splice(0, 1);
@@ -63,8 +58,8 @@ export class PostsComponent implements OnInit {
       .update(post)
 
       .subscribe({
-        next: (response) => {
-          console.log(response);
+        next: () => {
+          //console.log(response);
         },
         error: (error: AppError) => {
           if (error instanceof BadRequestError) {

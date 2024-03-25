@@ -15,7 +15,7 @@ export class CourseComponent implements OnInit {
       this.courses = this.courseservice.getCourse();
     }, 2000);
   }
-  trackCourse(index, course) {
+  trackCourse(course) {
     return course ? course.title : undefined;
   }
 
@@ -61,7 +61,7 @@ export class CourseComponent implements OnInit {
     });
   }
   remove(course) {
-    let index = this.courses.indexOf(course);
+    const index = this.courses.indexOf(course);
 
     this.courses.splice(index, 1);
     //course.title = 'updated';

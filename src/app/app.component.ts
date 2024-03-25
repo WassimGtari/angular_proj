@@ -18,12 +18,13 @@ export class AppComponent {
   }
   ondivClick(event: datafavorite) {
     console.log('favorite change : ' + event.newvalue);
-  }
+  } /* eslint-disable @typescript-eslint/no-explicit-any */
   Show($event: any) {
     $event.stopPropagation();
     console.log('test log', $event);
     this.isactive = !this.isactive;
   }
+  /* eslint-enable @typescript-eslint/no-explicit-any */
   title = 'angular_project';
   isactive = false;
   urlimage = 'https://imgupscaler.com/images/samples/animal-after.webp';

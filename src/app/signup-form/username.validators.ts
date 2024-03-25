@@ -11,7 +11,7 @@ export class UsernameValidators {
   static shouldBeUnique(
     control: AbstractControl
   ): Promise<ValidationErrors | null> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       // Simuler une requête HTTP ou une opération asynchrone pour vérifier l'unicité du nom d'utilisateur
       setTimeout(() => {
         if (control.value === 'wass') {

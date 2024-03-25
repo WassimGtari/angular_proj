@@ -15,8 +15,8 @@ export class ProfilComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {}
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      let id = +params.get('id');
-      let user = params.get('username');
+      const id = +params.get('id');
+     // const user = params.get('username');
       console.log(id);
     });
   }

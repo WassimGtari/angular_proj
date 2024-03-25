@@ -1,5 +1,4 @@
 ﻿import { Injectable } from '@angular/core';
-import { provideRouter } from '@angular/router';
 
 @Injectable()
 export class CourseService {

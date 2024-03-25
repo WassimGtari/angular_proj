@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FollwersService } from '../services/follwers.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, map, switchMap } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { combineLatest } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 @Component({
@@ -10,22 +10,24 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./followers.component.css'],
 })
 export class FollowersComponent implements OnInit {
-  followers: any[];
+  _followers: [];
   actualpage;
   constructor(
     private route: ActivatedRoute,
     private service: FollwersService,
     public authService: AuthService
   ) {}
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   ngOnInit() {
     combineLatest([this.route.paramMap, this.route.queryParamMap])
       .pipe(
         switchMap((combined) => {
-          let id = combined[0].get('id');
-          let page = combined[1].get('page');
+          const id: string = combined[0].get('id');
+          const page: string = combined[1].get('page');
           return this.service.getAll();
         })
       )
-      .subscribe((followers) => (this.followers = followers));
+      .subscribe((followers) => (this._followers = followers));
   }
+  /* eslint-enable @typescript-eslint/no-unused-vars */
 }

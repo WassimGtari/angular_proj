@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import {
-  AbstractControl,
   FormArray,
   FormBuilder,
   FormControl,
-  FormGroup,
   Validators,
 } from '@angular/forms';
 
@@ -24,11 +22,13 @@ export class NewCourseFormComponent {
       topics: fb.array([]),
     });
   }
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   removetopic(topic: any) {
-    let index = this.topics.controls.indexOf(topic);
+    const index = this.topics.controls.indexOf(topic);
     this.topics.removeAt(index);
   }
   form;
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   addtopic(topic: HTMLInputElement) {
     this.topics.push(new FormControl(topic.value));

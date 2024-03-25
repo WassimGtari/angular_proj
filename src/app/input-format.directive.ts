@@ -14,17 +14,17 @@ export class InputFormatDirective {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('mouseover') onMouseOver() {
-    let part = this.el.nativeElement.querySelector('.card-text');
+    const part = this.el.nativeElement.querySelector('.card-text');
     this.renderer.setStyle(part, 'display', 'block');
   }
 
   @HostListener('mouseout') onMouseOut() {
-    let part = this.el.nativeElement.querySelector('.card-text');
+    const part = this.el.nativeElement.querySelector('.card-text');
     this.renderer.setStyle(part, 'display', 'none');
   }
 
   @HostListener('blur') onblur() {
-    let part: string = this.el.nativeElement.value;
+    const part: string = this.el.nativeElement.value;
     if (this.format == 'lowercase')
       this.el.nativeElement.value = part.toLocaleLowerCase();
     else this.el.nativeElement.value = part.toLocaleUpperCase();

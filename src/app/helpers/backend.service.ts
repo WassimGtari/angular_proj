@@ -15,6 +15,7 @@ export class FakeAuthApiService implements InMemoryDbService {
 
     return { users };
   }
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   authenticate(credentials: {
     username: string;
     password: string;
@@ -32,4 +33,5 @@ export class FakeAuthApiService implements InMemoryDbService {
       return of(null);
     }
   }
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 }

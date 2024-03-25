@@ -16,7 +16,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { PostsComponent } from './posts/posts.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { PostService } from './services/post.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FollowersComponent } from './followers/followers.component';

@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.test';
 import {
   Component,
   EventEmitter,
@@ -13,8 +14,12 @@ import {
   encapsulation: ViewEncapsulation.Emulated,
 })
 export class FavoriteComponent {
-  @Input('isfavrite') isselected: boolean;
+  @Input() isselected: boolean;
+
+  color = environment.navbarcolor;
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() change = new EventEmitter();
+
   Onclick() {
     this.isselected = !this.isselected;
     this.change.emit({ newvalue: this.isselected });

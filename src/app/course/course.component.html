@@ -21,7 +21,7 @@
   <li class="nav-item">
     <a
       class="nav-link"
-      [class.active]="this.test_value == 'map'"
+      [class.active]="this.test_value === 'map'"
       (click)="this.test_value = 'map'"
       >Map View</a
     >
@@ -30,7 +30,7 @@
     <a
       (click)="this.test_value = 'list'"
       class="nav-link"
-      [class.active]="this.test_value == 'list'"
+      [class.active]="this.test_value === 'list'"
     >
       List View</a
     >

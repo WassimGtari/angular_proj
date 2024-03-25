@@ -1,6 +1,6 @@
 // auth.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
 import { Observable, of } from 'rxjs';
 import { User } from './user.model';
 import { FakeAuthApiService } from '../helpers/backend.service';
@@ -10,7 +10,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
   token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1vc2ggSGFtZWRhbmkiLCJhZG1pbiI6dHJ1ZX0.1dm4jAzSnmfPFNKXAz36Iq6I1upjQ3jW1kTfv5cx2XA';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1vc2ggSGFtZWRhbmkiLCJhZG1pbiI6ZmFsc2V9.DLTdOwxPMgCsXA9p2WDJvwimoQvL2Q6Yyn_sm6B4KRE';
 
   constructor(
     private fakeAuthApiService: FakeAuthApiService,
@@ -37,13 +37,14 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
   }
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   get currentUser(): any {
-    let token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     if (!token) return null;
 
     return new JwtHelperService().decodeToken(token);
   }
-
+  /* eslint-enable @typescript-eslint/no-explicit-any */
   isLoggedIn(): boolean {
     // Check if user is logged in (check JWT token)
     const token = localStorage.getItem('token');
