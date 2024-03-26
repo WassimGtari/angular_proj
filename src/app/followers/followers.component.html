@@ -1,5 +1,5 @@
 <p *ngIf="authService.isLoggedIn()">{{authService.currentUser.name}}</p>
-<div *ngFor="let follower of followers" class="media">
+<div *ngFor="let follower of _followers" class="media">
   <div class="media-left">
     <a href="#">
       <img class="avatar media-object" src="{{ follower.avatar_url }}" alt="...">

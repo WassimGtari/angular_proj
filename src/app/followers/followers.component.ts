@@ -10,7 +10,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./followers.component.css'],
 })
 export class FollowersComponent implements OnInit {
-  _followers: [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  _followers: any[];
   actualpage;
   constructor(
     private route: ActivatedRoute,
